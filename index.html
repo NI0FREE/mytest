@@ -27,6 +27,7 @@
     <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
     <script> 
      vkBridge.send('VKWebAppInit');
+     vkBridge.send("VKWebAppSetViewSettings", {"status_bar_style": "light", "action_bar_color": "#2C3E50","navigation_bar_color": "#2C3E50"});   
     </script> 
     <div class="vk-header">
         <h5 id="vkHeaderText" >Что декодируем сегодня?</h5>
