@@ -8,6 +8,75 @@
 </head>
 <body>
     <style>
+.nf{
+
+    font-family: "TT Commons",-apple-system,system-ui,Helvetica Neue,Roboto,sans-serif;
+
+}
+section.examples {
+  border: 3px dashed #333;
+  padding: 20px;
+  position: relative;
+}
+section.examples:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+/* Important part */
+.box {
+    position: relative;
+    width: 30.333333%;
+    margin: 4% 0% 0% 2.2222222%;
+    float: left;
+    font-size: 12px;
+   
+}
+.box:before {
+  content: "";
+  display: block;
+  margin-top: 100%; /* initial ratio of 1:1*/
+}
+
+/* Other ratios */
+.ratio2_1:before {
+  margin-top: 50%;
+}
+.ratio1_2:before {
+  margin-top: 200%;
+}
+.ratio4_3:before {
+  margin-top: 75%;
+}
+.ratio16_9:before {
+  margin-top: 56.25%;
+}
+.content {
+  /* Positioning */
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  color: #fff;
+
+  /* Styling */
+  background: #1a252f;
+  padding: 20px;
+  text-align: center;
+  vertical-align: center;
+  text-transform: uppercase;
+}
+.content span {
+  font-weight: bold;
+  font-size: 10px;
+  display: block;
+}
+
+
+
+    </style>
+    <style>
    body {
       overflow: hidden;
       margin: 0;
@@ -25,6 +94,8 @@
 
     </style>
     <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
     <script> 
      vkBridge.send('VKWebAppInit');
      vkBridge.send("VKWebAppSetViewSettings", {"status_bar_style": "light", "action_bar_color": "#2C3E50","navigation_bar_color": "#2C3E50"});   
@@ -32,8 +103,119 @@
     <div class="vk-header">
         <h5 id="vkHeaderText" >Что декодируем сегодня?</h5>
     </div>
+    <div class="box ratio1_1">
+        <div class="content" style="border-radius: 5px;"><span style="width: 100%;height: 100%; ">
+                <table style="width: 100%;height: 100%;">
+                    <tbody>
+                        <tr>
+                            <td style="vertical-align:middle;text-align:center;">
+                                <h1 class="nf">MD5</h1>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </span></div>
+    </div>
 
 
+    <div class="box ratio1_1">
+        <div class="content" style="border-radius: 5px;"><span style="width: 100%;height: 100%; ">
+                <table style="width: 100%;height: 100%;">
+                    <tbody>
+                        <tr>
+                            <td style="vertical-align:middle;text-align:center;">
+                                <h1 class="nf">MD5</h1>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </span></div>
+    </div>
 
+    <div class="box ratio1_1">
+        <div class="content" style="border-radius: 5px;"><span style="width: 100%;height: 100%; ">
+                <table style="width: 100%;height: 100%;">
+                    <tbody>
+                        <tr>
+                            <td style="vertical-align:middle;text-align:center;">
+                                <h1 class="nf">MD5</h1>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </span></div>
+    </div>
+
+    <div class="box ratio1_1">
+        <div class="content" style="border-radius: 5px;"><span style="width: 100%;height: 100%; ">
+                <table style="width: 100%;height: 100%;">
+                    <tbody>
+                        <tr>
+                            <td style="vertical-align:middle;text-align:center;">
+                                <h1 class="nf">MD5</h1>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </span></div>
+    </div>
+
+    <div class="box ratio1_1">
+        <div class="content" style="border-radius: 5px;"><span style="width: 100%;height: 100%; ">
+                <table style="width: 100%;height: 100%;">
+                    <tbody>
+                        <tr>
+                            <td style="vertical-align:middle;text-align:center;">
+                                <h1 class="nf">MD5</h1>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </span></div>
+    </div>
+
+    <div class="box ratio1_1">
+        <div class="content" style="border-radius: 5px;"><span style="width: 100%;height: 100%; ">
+                <table style="width: 100%;height: 100%;">
+                    <tbody>
+                        <tr>
+                            <td style="vertical-align:middle;text-align:center;">
+                                <h1 class="nf">MD5</h1>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </span></div>
+    </div>
+
+    <div class="box ratio1_1">
+        <div class="content" style="border-radius: 5px;"><span style="width: 100%;height: 100%; ">
+                <table style="width: 100%;height: 100%;">
+                    <tbody>
+                        <tr>
+                            <td style="vertical-align:middle;text-align:center;">
+                                <h1 class="nf">MD5</h1>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </span></div>
+    </div>
+
+    <div class="box ratio1_1">
+        <div class="content" style="border-radius: 5px;"><span style="width: 100%;height: 100%; ">
+                <table style="width: 100%;height: 100%;">
+                    <tbody>
+                        <tr>
+                            <td style="vertical-align:middle;text-align:center;">
+                                <h1 class="nf">MD5</h1>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </span></div>
+    </div>
+
+    
 </body>
 </html>
