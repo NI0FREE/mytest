@@ -338,13 +338,14 @@ section.examples:after {
                 showMenuNM8(true);
                 document.getElementById("vkHeaderText").innerHTML="Проверка MD5";
             });
-            var canIChange = true;
+        
+            var timeOutCou = 0;
             document.getElementById("copy").addEventListener( "click" , () => {
                 if(input.value.length>0){
                 vkBridge.send("VKWebAppCopyText", {"text": document.getElementById("outHash").innerHTML});
                 copySuccess(true);
-                canIChange = true;
-                setTimeout(()=>{if(canIChange){copySuccess(false);}},1500)
+                document.getElementById("copy").style.pointerEvents = "none";
+             
                 }    
             });
 
