@@ -77,6 +77,12 @@ section.examples:after {
 
     </style>
     <style>
+   .inApp{     
+    width: 100%;
+    height: calc(100vh - 56px );
+    overflow: auto;
+    overflow-x: hidden;
+    }
    body {
       overflow: hidden;
       margin: 0;
@@ -94,8 +100,7 @@ section.examples:after {
 
     </style>
     <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
     <script> 
      vkBridge.send('VKWebAppInit');
      vkBridge.send("VKWebAppSetViewSettings", {"status_bar_style": "light", "action_bar_color": "#2C3E50","navigation_bar_color": "#2C3E50"});   
@@ -103,7 +108,9 @@ section.examples:after {
     <div class="vk-header">
         <h5 id="vkHeaderText" >Что проверяем сегодня?</h5>
     </div>
-    <div class="box ratio1_1">
+    <div class="inApp" id="menu" style="display: '';">
+
+    <div class="box ratio1_1" id ="md5C">
         <div class="content" style="border-radius: 5px;"><span style="width: 100%;height: 100%; ">
                 <table style="width: 100%;height: 100%;">
                     <tbody>
@@ -216,6 +223,27 @@ section.examples:after {
             </span></div>
     </div>
 
-    
+</div>
+
+
+        <div class="inApp" id="menu1" style="display: 'none';">
+
+
+
+        <div>
+
+
+
+            <script>
+            document.getElementById("md5C").addEventListener( "click" , () => {
+                document.getElementById("vkHeaderText").innerHTML="Проверка MD5";
+                showMenu(false);
+                showMenuNM8(true);
+            });
+
+            function showMenu(tf){if(tf){document.getElementById("menu").style.display = "";}else{document.getElementById("menu").style.display = "none"}}
+            function showMenuNM8(tf){if(tf){document.getElementById("menu1").style.display = "";}else{document.getElementById("menu1").style.display = "none"}}
+
+            </script>
 </body>
 </html>
