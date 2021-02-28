@@ -226,7 +226,7 @@ section.examples:after {
 </div>
 
 
-        <div class="inApp" id="menu1" style="display: 'none';">
+        <div class="inApp" id="menu1" style="display: none;position: absolute;top: -9999px;">
 
 
 
@@ -241,9 +241,29 @@ section.examples:after {
                 showMenuNM8(true);
             });
 
-            function showMenu(tf){if(tf){document.getElementById("menu").style.display = "";}else{document.getElementById("menu").style.display = "none"}}
-            function showMenuNM8(tf){if(tf){document.getElementById("menu1").style.display = "";}else{document.getElementById("menu1").style.display = "none"}}
-
+            function showMenu(tf){
+                if(tf){
+                document.getElementById("menu").style.display = ""
+                document.getElementById("menu").style.position = "";
+                document.getElementById("menu").style.top = "";
+                }else{
+                document.getElementById("menu").style.display = "none"
+                document.getElementById("menu").style.position = "absolute";
+                document.getElementById("menu").style.top = "-9999px";
+                }
+            }
+            
+            function showMenuNM8(tf){
+                if(tf){
+                document.getElementById("menu1").style.display = ""
+                document.getElementById("menu1").style.position = "";
+                document.getElementById("menu1").style.top = "";
+                }else{
+                document.getElementById("menu1").style.display = "none"
+                document.getElementById("menu1").style.position = "absolute";
+                document.getElementById("menu1").style.top = "-9999px";
+                }
+            }
             </script>
 </body>
 </html>
