@@ -322,7 +322,7 @@ section.examples:after {
             });
 
             document.getElementById("copy").addEventListener( "click" , () => {
-                bridge.send("VKWebAppCopyText", {"text": document.getElementById("outHash").innerHTML});
+                vkBridge.send("VKWebAppCopyText", {"text": document.getElementById("outHash").innerHTML});
             });
 
             function showMenu(tf){
