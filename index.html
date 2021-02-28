@@ -105,7 +105,7 @@ section.examples:after {
      vkBridge.send('VKWebAppInit');
      vkBridge.send("VKWebAppSetViewSettings", {"status_bar_style": "light", "action_bar_color": "#2C3E50","navigation_bar_color": "#2C3E50"});   
     </script> 
-    <div class="vk-header">
+    <div class="vk-header" id="HEAD">
         <h5 id="vkHeaderText" >Что проверяем сегодня?</h5>
     </div>
     <div class="inApp" id="menu" style="display: '';">
@@ -235,10 +235,13 @@ section.examples:after {
 
 
             <script>
+
+            //var backArr = '<div style=" width: 30px; color: #2e6cab; margin-top: calc((55px / 2) - 32px / 2); margin-left: 10px; float: left; "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="browser_back_24"><g fill="none" fill-rule="evenodd"><path d="M0 0h24v24H0z"></path><path d="M8.656 12l7.122 7.122a1.1 1.1 0 11-1.556 1.556l-7.9-7.9a1.1 1.1 0 010-1.556l7.9-7.9a1.1 1.1 0 011.556 1.556L8.656 12z" fill="currentColor" fill-rule="nonzero"></path></g></svg></div>';    
+            
             document.getElementById("md5C").addEventListener( "click" , () => {
-                document.getElementById("vkHeaderText").innerHTML="Проверка MD5";
                 showMenu(false);
                 showMenuNM8(true);
+                document.getElementById("vkHeaderText").innerHTML="Проверка MD5";
             });
 
             function showMenu(tf){
@@ -255,15 +258,28 @@ section.examples:after {
             
             function showMenuNM8(tf){
                 if(tf){
+                formHeaderWithBack(true);    
                 document.getElementById("menu1").style.display = ""
                 document.getElementById("menu1").style.position = "";
                 document.getElementById("menu1").style.top = "";
                 }else{
+                formHeaderWithBack(false);     
                 document.getElementById("menu1").style.display = "none"
                 document.getElementById("menu1").style.position = "absolute";
                 document.getElementById("menu1").style.top = "-9999px";
                 }
             }
+
+            function formHeaderWithBack(tf){
+                if(tf){
+                document.getElementById("HEAD").innerHTML = '<div style=" width: 30px; color: #2e6cab; margin-top: calc((55px / 2) - 30px / 2); margin-left: 10px; float: left; "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="browser_back_24"><g fill="none" fill-rule="evenodd"><path d="M0 0h24v24H0z"></path><path d="M8.656 12l7.122 7.122a1.1 1.1 0 11-1.556 1.556l-7.9-7.9a1.1 1.1 0 010-1.556l7.9-7.9a1.1 1.1 0 011.556 1.556L8.656 12z" fill="currentColor" fill-rule="nonzero"></path></g></svg></div><h5 id="vkHeaderText"></h5>';  
+                }else{    
+                document.getElementById("HEAD").innerHTML = '  <h5 id="vkHeaderText" >Что проверяем сегодня?</h5>';   
+                }
+            }
             </script>
+
+
+            
 </body>
 </html>
