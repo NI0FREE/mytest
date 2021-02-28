@@ -16,20 +16,20 @@
 .nf2 {
     font-family: "TT Commons",-apple-system,system-ui,Helvetica Neue,Roboto;
 }
-
+.noselect {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;   
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    -khtml-user-select: none;
+}
 .toCn:active{
-  color: #ffffff;
-  background: repeating-linear-gradient(
-  45deg,
-  #263544,
-  #263646 10px,
-  #34495f 10px,
-  #34495f 20px
-);
-
-
+    background-position:25px;  
 }
 .stripe-1 {
+  
   color: #ffffff;
   background: repeating-linear-gradient(
   45deg,
@@ -38,6 +38,10 @@
   #34495f 10px,
   #34495f 20px
 );
+-webkit-transition: background 2s ease-out;  
+    -moz-transition: background 2s ease-out;  
+    -o-transition: background 2s ease-out;  
+    transition: background 2s ease-out; 
 }
 .vkInpt{
 
@@ -286,7 +290,7 @@ section.examples:after {
             <div class="nf txt1">MD5 hash</div>
             <div id = "outHash" type="text" class="vkInpt nf"></div>
 
-            <div id="copy" type="text" class="vkInpt nf toCn stripe-1" style="text-align: center;">Cкопировать</div>
+            <div id="copy" type="text" class="vkInpt nf toCn stripe-1 noselect" style="text-align: center;">Cкопировать</div>
         </div>
             <script>
             const isMobile = /Mobile|webOS|BlackBerry|IEMobile|MeeGo|mini|Fennec|Windows Phone|Android|iP(ad|od|hone)/i.test(navigator.userAgent);
