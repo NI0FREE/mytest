@@ -297,6 +297,10 @@ section.examples:after {
         </div>
             <script>
             const isMobile = /Mobile|webOS|BlackBerry|IEMobile|MeeGo|mini|Fennec|Windows Phone|Android|iP(ad|od|hone)/i.test(navigator.userAgent);
+            if(!isMobile){
+                document.getElementById("copy").style.display="none";
+            }
+            
             var type = "md5";
             var input = document.getElementById("inHash");
             input.oninput = function() {
@@ -315,6 +319,10 @@ section.examples:after {
                 showMenu(false);
                 showMenuNM8(true);
                 document.getElementById("vkHeaderText").innerHTML="Проверка MD5";
+            });
+
+            document.getElementById("copy").addEventListener( "click" , () => {
+                bridge.send("VKWebAppCopyText", {"text": document.getElementById("outHash").innerHTML});
             });
 
             function showMenu(tf){
