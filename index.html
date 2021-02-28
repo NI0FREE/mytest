@@ -293,7 +293,8 @@ section.examples:after {
             <div class="nf txt1">MD5 hash</div>
             <div id = "outHash" type="text" class="vkInpt nf"></div>
 
-            <div id="copy" type="text" class="vkInpt nf toCn stripe-1 noselect" style="text-align: center;">Cкопировать</div>
+            <div id="copy" type="text" class="vkInpt nf toCn stripe-1 noselect" style="pointer-events: none;text-align: center;padding: 0px;"><div class="vkInpt" style="width: 100%;height: 100%;background-color: #4a424245;border-radius: 5px;margin: 0px;border: none;color: #a8afb5;">Нечего копировать</div></div>
+        
         </div>
             <script>
             const isMobile = /Mobile|webOS|BlackBerry|IEMobile|MeeGo|mini|Fennec|Windows Phone|Android|iP(ad|od|hone)/i.test(navigator.userAgent);
@@ -301,28 +302,50 @@ section.examples:after {
                 document.getElementById("copy").style.display="none";
             }
             
+            function copySuccess(tf){
+                if(tf){
+                document.getElementById("copy").innerHTML = "Скопировано успешно!";
+                }else{
+                document.getElementById("copy").innerHTML = "Скопировать";    
+                }
+            }
+
             var type = "md5";
             var input = document.getElementById("inHash");
             input.oninput = function() {
                 if(input.value.length>0){
                 document.getElementById("outHash").innerHTML = CryptoJS.MD5(input.value).toString();
+                document.getElementById("copy").innerHTML = "Скопировать";
+                document.getElementById("copy").style.padding = "10px";
+                document.getElementById("copy").style.pointerEvents = "";
+                
                 }else{
                 document.getElementById("outHash").innerHTML = ""
+                document.getElementById("copy").style.padding = "0px";
+                document.getElementById("copy").style.pointerEvents = "none";
+                canIChange = false;
+                document.getElementById("copy").innerHTML = "Нечего копировать";   
+                document.getElementById("copy").innerHTML = nonAcCopy;
                 }
             };
             
 
 
             //var backArr = '<div style=" width: 30px; color: #2e6cab; margin-top: calc((55px / 2) - 32px / 2); margin-left: 10px; float: left; "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="browser_back_24"><g fill="none" fill-rule="evenodd"><path d="M0 0h24v24H0z"></path><path d="M8.656 12l7.122 7.122a1.1 1.1 0 11-1.556 1.556l-7.9-7.9a1.1 1.1 0 010-1.556l7.9-7.9a1.1 1.1 0 011.556 1.556L8.656 12z" fill="currentColor" fill-rule="nonzero"></path></g></svg></div>';    
-            
+            var nonAcCopy ='<div class="vkInpt" style="width: 100%;height: 100%;background-color: #4a424245;border-radius: 5px;margin: 0px;border: none;color: #a8afb5;">Нечего копировать</div>'
             document.getElementById("md5C").addEventListener( "click" , () => {
                 showMenu(false);
                 showMenuNM8(true);
                 document.getElementById("vkHeaderText").innerHTML="Проверка MD5";
             });
-
+            var canIChange = true;
             document.getElementById("copy").addEventListener( "click" , () => {
+                if(input.value.length>0){
                 vkBridge.send("VKWebAppCopyText", {"text": document.getElementById("outHash").innerHTML});
+                copySuccess(true);
+                canIChange = true;
+                setTimeout(()=>{if(canIChange){copySuccess(false);}},1500)
+                }    
             });
 
             function showMenu(tf){
