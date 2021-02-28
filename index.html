@@ -13,6 +13,36 @@
     font-family: "TT Commons",-apple-system,system-ui,Helvetica Neue,Roboto,sans-serif;
 
 }
+.nf2 {
+    font-family: "TT Commons",-apple-system,system-ui,Helvetica Neue,Roboto;
+}
+.vkInpt{
+
+    margin: 15px;
+    width: calc(100% - 30px);
+    display: block;
+    box-sizing: border-box;
+    height: 44px;
+    font-size: 16px;
+    color: aliceblue;
+    position: relative;
+    z-index: 2;
+    border-radius: 5px;
+    border-style: none;
+    background-color: #2c3e50;
+    outline: aliceblue;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #223344;
+
+}:focus {
+     border: 1px solid #005d79; /* Параметры рамки */
+   }
+.txt1{
+    margin-left: 15px;
+    color: aliceblue;
+    margin-top: 15px;
+}
 section.examples {
   border: 3px dashed #333;
   padding: 20px;
@@ -227,10 +257,10 @@ section.examples:after {
 
 
         <div class="inApp" id="menu1" style="display: none;position: absolute;top: -9999px;">
+            <div class="nf txt1">Входная строка</div>
+            <input type="text" class="vkInpt nf">
 
-
-
-        <div>
+        </div>
 
 
 
