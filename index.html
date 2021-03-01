@@ -185,13 +185,27 @@ section.examples:after {
     </div>
 
 
-    <div class="box ratio1_1">
+    <div class="box ratio1_1"  id ="SHA-1">
         <div class="content" style="border-radius: 5px;"><span style="width: 100%;height: 100%; ">
                 <table style="width: 100%;height: 100%;">
                     <tbody>
                         <tr>
                             <td style="vertical-align:middle;text-align:center;">
-                                <h1 class="nf">MD5</h1>
+                                <h1 class="nf">SHA-1</h1>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </span></div>
+    </div>
+
+    <div class="box ratio1_1"  id ="SHA-2">
+        <div class="content" style="border-radius: 5px;"><span style="width: 100%;height: 100%; ">
+                <table style="width: 100%;height: 100%;">
+                    <tbody>
+                        <tr>
+                            <td style="vertical-align:middle;text-align:center;">
+                                <h1 class="nf">SHA-2</h1>
                             </td>
                         </tr>
                     </tbody>
@@ -205,7 +219,7 @@ section.examples:after {
                     <tbody>
                         <tr>
                             <td style="vertical-align:middle;text-align:center;">
-                                <h1 class="nf">MD5</h1>
+                                <h1 class="nf">-</h1>
                             </td>
                         </tr>
                     </tbody>
@@ -219,7 +233,7 @@ section.examples:after {
                     <tbody>
                         <tr>
                             <td style="vertical-align:middle;text-align:center;">
-                                <h1 class="nf">MD5</h1>
+                                <h1 class="nf">SHA-3</h1>
                             </td>
                         </tr>
                     </tbody>
@@ -233,21 +247,7 @@ section.examples:after {
                     <tbody>
                         <tr>
                             <td style="vertical-align:middle;text-align:center;">
-                                <h1 class="nf">MD5</h1>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </span></div>
-    </div>
-
-    <div class="box ratio1_1">
-        <div class="content" style="border-radius: 5px;"><span style="width: 100%;height: 100%; ">
-                <table style="width: 100%;height: 100%;">
-                    <tbody>
-                        <tr>
-                            <td style="vertical-align:middle;text-align:center;">
-                                <h1 class="nf">MD5</h1>
+                                <h1 class="nf">RIPEMD-160</h1>
                             </td>
                         </tr>
                     </tbody>
@@ -290,11 +290,11 @@ section.examples:after {
             <div class="nf txt1">Входная строка</div>
             <input id  = "inHash" type="text" class="vkInpt nf">
 
-            <div class="nf txt1">MD5 hash</div>
+            <div class="nf txt1" id = "inintype">- hash</div>
             <div id = "outHash" type="text" class="vkInpt nf"></div>
 
             <div id="copy" type="text" class="vkInpt nf toCn stripe-1 noselect" style="pointer-events: none;text-align: center;padding: 0px;"><div class="vkInpt" style="width: 100%;height: 100%;background-color: #4a424245;border-radius: 5px;margin: 0px;border: none;color: #a8afb5;">Нечего копировать</div></div>
-        
+            <div id="menuMd2" style="display: none"><div id="outHash" type="text" class="vkInpt nf" style="width: calc(25% - 15.5px);float: left;margin-right: 0px;text-align: center;font-size: 14px;padding: 0px;padding-top: 10px;">SHA-512</div><div id="outHash" type="text" class="vkInpt nf" style="width: calc(25% - 15.5px);float: left;margin-right: 0px;margin-left: 10px;text-align: center;font-size: 14px;padding: 0px;padding-top: 10px;">SHA-256</div><div id="outHash" type="text" class="vkInpt nf" style="width: calc(25% - 15.5px);float: left;margin-right: 0px;margin-left: 11px;text-align: center;font-size: 14px;padding: 0px;padding-top: 10px;">SHA-384</div><div id="outHash" type="text" class="vkInpt nf" style="width: calc(25% - 15.5px);float: left;margin-right: 0px;margin-left: 10px;text-align: center;font-size: 14px;padding: 0px;padding-top: 10px;">SHA-224</div></div>
         </div>
             <script>
             const isMobile = /Mobile|webOS|BlackBerry|IEMobile|MeeGo|mini|Fennec|Windows Phone|Android|iP(ad|od|hone)/i.test(navigator.userAgent);
@@ -314,7 +314,12 @@ section.examples:after {
             var input = document.getElementById("inHash");
             input.oninput = function() {
                 if(input.value.length>0){
+                if(type == "md5"){
                 document.getElementById("outHash").innerHTML = CryptoJS.MD5(input.value).toString();
+                }
+                if(type == "SHA-1"){
+                document.getElementById("outHash").innerHTML = CryptoJS.SHA1(input.value).toString();
+                }
                 document.getElementById("copy").innerHTML = "Скопировать";
                 document.getElementById("copy").style.padding = "10px";
                 document.getElementById("copy").style.pointerEvents = "";
@@ -330,15 +335,49 @@ section.examples:after {
             };
             
 
-
+            function typechange(){
+                document.getElementById("outHash").innerHTML = "";
+                input.value = "";
+                if(type == "md5"){
+                    document.getElementById("inintype").innerHTML = "md5 hash";
+                    document.getElementById("menuMd2").style.display = "none"
+                }
+                if(type == "SHA-1"){
+                    document.getElementById("inintype").innerHTML = "SHA-1 hash";
+                    document.getElementById("menuMd2").style.display = "none"
+                }
+                if(type == "SHA-2"){
+                    document.getElementById("inintype").innerHTML = "SHA-2 hash";
+                    document.getElementById("menuMd2").style.display = ""
+                    
+                }       
+            }
             //var backArr = '<div style=" width: 30px; color: #2e6cab; margin-top: calc((55px / 2) - 32px / 2); margin-left: 10px; float: left; "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="browser_back_24"><g fill="none" fill-rule="evenodd"><path d="M0 0h24v24H0z"></path><path d="M8.656 12l7.122 7.122a1.1 1.1 0 11-1.556 1.556l-7.9-7.9a1.1 1.1 0 010-1.556l7.9-7.9a1.1 1.1 0 011.556 1.556L8.656 12z" fill="currentColor" fill-rule="nonzero"></path></g></svg></div>';    
             var nonAcCopy ='<div class="vkInpt" style="width: 100%;height: 100%;background-color: #4a424245;border-radius: 5px;margin: 0px;border: none;color: #a8afb5;">Нечего копировать</div>'
             document.getElementById("md5C").addEventListener( "click" , () => {
+                type = "md5";
+                typechange();
                 showMenu(false);
                 showMenuNM8(true);
                 document.getElementById("vkHeaderText").innerHTML="Проверка MD5";
             });
-        
+            
+            document.getElementById("SHA-1").addEventListener( "click" , () => {
+                type = "SHA-1";
+                typechange();
+                showMenu(false);
+                showMenuNM8(true);
+                document.getElementById("vkHeaderText").innerHTML="Проверка SHA-1";
+            });
+            document.getElementById("SHA-2").addEventListener( "click" , () => {
+                type = "SHA-2";
+                typechange();
+                showMenu(false);
+                showMenuNM8(true);
+                document.getElementById("vkHeaderText").innerHTML="Проверка SHA-2";
+            });
+
+
             var timeOutCou = 0;
             document.getElementById("copy").addEventListener( "click" , () => {
                 if(input.value.length>0){
