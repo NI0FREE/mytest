@@ -173,10 +173,10 @@ function genPatPhon(cnw,cnh){
         ssgtx.drawImage(lcanv, 0, 0, wi, he);
 }
 console.log( Math.ceil(wi/30))
-var xscalerad = 2;
+var xscalerad = window.devicePixelRatio*1;
 var rad =  5*xscalerad;
 var onefive = Math.ceil(wi/15*xscalerad)+5*xscalerad;
-var thrzero = Math.ceil(wi/30*xscalerad)/2/window.devicePixelRatio;
+var thrzero = Math.ceil(wi/30*xscalerad)/2/xscalerad;
 function removearrea(x, y)
 {       
          
