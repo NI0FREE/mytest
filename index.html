@@ -1,435 +1,256 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MD5++</title>
-</head>
-<body>
-    <style>
-.nf{
-
-    font-family: "TT Commons",-apple-system,system-ui,Helvetica Neue,Roboto,sans-serif;
-
-}
-.nf2 {
-    font-family: "TT Commons",-apple-system,system-ui,Helvetica Neue,Roboto;
-}
-.noselect {
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -webkit-touch-callout: none;   
-    -ms-user-select: none;
-    -o-user-select: none;
-    user-select: none;
-    -khtml-user-select: none;
-}
-.toCn:active{
-    background-position-y:25px;  
-}
-.stripe-1 {
-  
-  color: #ffffff;
-  background: repeating-linear-gradient(
-  45deg,
-  #2c3e50,
-  #2c3e50 10px,
-  #34495f 10px,
-  #34495f 20px
-  
-);
-
--webkit-transition: background 2s ease-out;  
-    -moz-transition: background 2s ease-out;  
-    -o-transition: background 2s ease-out;  
-    transition: background 2s ease-out; 
-    background-size: 84px 28px;
-}
-.vkInpt{
-
-    margin: 15px;
-    width: calc(100% - 30px);
-    display: block;
-    box-sizing: border-box;
-    height: 44px;
-    font-size: 16px;
-    color: aliceblue;
-    position: relative;
-    z-index: 2;
-    border-radius: 5px;
-    border-style: none;
-    background-color: #2c3e50;
-    outline: aliceblue;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #223344;
-
-}:focus {
-     border: 1px solid #005d79; /* Параметры рамки */
-   }
-.txt1{
-    margin-left: 15px;
-    color: aliceblue;
-    margin-top: 15px;
-}
-section.examples {
-  border: 3px dashed #333;
-  padding: 20px;
-  position: relative;
-}
-section.examples:after {
-  content: "";
-  clear: both;
-  display: table;
-}
-/* Important part */
-.box {
-    position: relative;
-    width: 30.333333%;
-    margin: 2.2222222% 0% 0% 2.2222222%;
-    float: left;
-    font-size: 12px;
-   
-}
-.box:before {
-  content: "";
-  display: block;
-  margin-top: 100%; /* initial ratio of 1:1*/
-}
-
-/* Other ratios */
-.ratio2_1:before {
-  margin-top: 50%;
-}
-.ratio1_2:before {
-  margin-top: 200%;
-}
-.ratio4_3:before {
-  margin-top: 75%;
-}
-.ratio16_9:before {
-  margin-top: 56.25%;
-}
-.content {
-  /* Positioning */
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  color: #fff;
-
-  /* Styling */
-  background: #20303e;
-  padding: 20px;
-  text-align: center;
-  vertical-align: center;
-  text-transform: uppercase;
-}
-.content span {
-  font-weight: bold;
-  font-size: 10px;
-  display: block;
-}
-
-
-
-    </style>
-    <style>
-   .inApp{     
-    width: 100%;
-    height: calc(100vh - 56px );
-    overflow: auto;
-    overflow-x: hidden;
+    <title>Document</title>
+<style>* {box-sizing:border-box;}
+   /* .wrap {
+    height: 200px;
+    padding: 25px;
     }
-   body {
-      overflow: hidden;
-      margin: 0;
-      background:#34495E;
-      position: relative;
-  }
-    .vk-header{height: 55px; z-index:999;width:100%;background-color:#2C3E50;text-align:left;top:0px;overflow:hidden;position:-webkit-sticky;position:sticky;}
-  .vk-header h5{
-    color:white;margin: 17px;font-size: 16px; opacity: 1;
-    font-family: "TT Commons",-apple-system,system-ui,Helvetica Neue,Roboto,sans-serif;
-    font-weight: 500;
-    color: white;
-    float: left;
-    margin-inline-end: 7px;}
+    .gradient {
+        height: 150px;
+    width: 50%;
+    margin: 0 auto;
+    border: 6px solid transparent;
+    border-image: 10 repeating-linear-gradient(45deg, #fde539, #fbff22 21px, transparent 10px, transparent 3px, #f9f20f 0px, #dcde1c 35px,transparent 25px, transparent 35px);}
+    */</style></head>
 
-    </style>
-    <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
-    <script> 
-     vkBridge.send('VKWebAppInit');
-     vkBridge.send("VKWebAppSetViewSettings", {"status_bar_style": "light", "action_bar_color": "#2C3E50","navigation_bar_color": "#2C3E50"});   
-    </script> 
-    <div class="vk-header" id="HEAD">
-        <h5 id="vkHeaderText" >Что проверяем сегодня?</h5>
-    </div>
-    <div class="inApp" id="menu" style="display: '';">
-
-    <div class="box ratio1_1" id ="md5C">
-        <div class="content" style="border-radius: 5px;"><span style="width: 100%;height: 100%; ">
-                <table style="width: 100%;height: 100%;">
-                    <tbody>
-                        <tr>
-                            <td style="vertical-align:middle;text-align:center;">
-                                <h1 class="nf">MD5</h1>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </span></div>
-    </div>
-
-
-    <div class="box ratio1_1"  id ="SHA-1">
-        <div class="content" style="border-radius: 5px;"><span style="width: 100%;height: 100%; ">
-                <table style="width: 100%;height: 100%;">
-                    <tbody>
-                        <tr>
-                            <td style="vertical-align:middle;text-align:center;">
-                                <h1 class="nf">SHA-1</h1>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </span></div>
-    </div>
-
-    <div class="box ratio1_1"  id ="SHA-2">
-        <div class="content" style="border-radius: 5px;"><span style="width: 100%;height: 100%; ">
-                <table style="width: 100%;height: 100%;">
-                    <tbody>
-                        <tr>
-                            <td style="vertical-align:middle;text-align:center;">
-                                <h1 class="nf">SHA-2</h1>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </span></div>
-    </div>
-
-    <div class="box ratio1_1">
-        <div class="content" style="border-radius: 5px;"><span style="width: 100%;height: 100%; ">
-                <table style="width: 100%;height: 100%;">
-                    <tbody>
-                        <tr>
-                            <td style="vertical-align:middle;text-align:center;">
-                                <h1 class="nf">-</h1>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </span></div>
-    </div>
-
-    <div class="box ratio1_1">
-        <div class="content" style="border-radius: 5px;"><span style="width: 100%;height: 100%; ">
-                <table style="width: 100%;height: 100%;">
-                    <tbody>
-                        <tr>
-                            <td style="vertical-align:middle;text-align:center;">
-                                <h1 class="nf">SHA-3</h1>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </span></div>
-    </div>
-
-    <div class="box ratio1_1">
-        <div class="content" style="border-radius: 5px;"><span style="width: 100%;height: 100%; ">
-                <table style="width: 100%;height: 100%;">
-                    <tbody>
-                        <tr>
-                            <td style="vertical-align:middle;text-align:center;">
-                                <h1 class="nf">RIPEMD-160</h1>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </span></div>
-    </div>
-
-    <div class="box ratio1_1">
-        <div class="content" style="border-radius: 5px;"><span style="width: 100%;height: 100%; ">
-                <table style="width: 100%;height: 100%;">
-                    <tbody>
-                        <tr>
-                            <td style="vertical-align:middle;text-align:center;">
-                                <h1 class="nf">MD5</h1>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </span></div>
-    </div>
-
-    <div class="box ratio1_1">
-        <div class="content" style="border-radius: 5px;"><span style="width: 100%;height: 100%; ">
-                <table style="width: 100%;height: 100%;">
-                    <tbody>
-                        <tr>
-                            <td style="vertical-align:middle;text-align:center;">
-                                <h1 class="nf">MD5</h1>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </span></div>
-    </div>
-
+<body>
+<div id="lottopage">
+    <canvas id="sscanv" class="gradient" style="color: #635353;display: block;margin-left: auto;margin-right: auto;margin-top: 40vh;" width="300"height="300"></canvas>
+   
 </div>
 
+<script>
+var he = document.getElementById("sscanv").clientHeight;     
+var wh = document.getElementById("sscanv").clientWidth;      
+generateTicket("25",document.getElementById("sscanv"),wh,he,35,38)
 
-        <div class="inApp" id="menu1" style="display: none;position: absolute;top: -9999px;">
-            <div class="nf txt1">Входная строка</div>
-            <input id  = "inHash" type="text" class="vkInpt nf">
 
-            <div class="nf txt1" id = "inintype">- hash</div>
-            <div id = "outHash" type="text" class="vkInpt nf"></div>
+//generateTicket(текст-приза,обьект-canvas,ширина,высота,кастом-размер-текста,кастом-Y-позиция-текста)
+function generateTicket(prize,target,wii,hee,ttextSize,ttextY,lightGR,CR=0){
+    var lightGRR = lightGR || 0;
+    var textSize = Math.round (ttextSize*window.devicePixelRatio);
+    var textY = Math.round (ttextY*window.devicePixelRatio);
+    var wi = Math.round (wii*window.devicePixelRatio)
+    var he = Math.round (hee*window.devicePixelRatio)
+let txtSize = (textSize*10) || wi;
+let txtY = (textY*2) || he;
+let div = document.createElement('div');
+  div.className = "none";
+  div.innerHTML = '<canvas id="scanv15248"width="'+wi+'"height="'+he+'"></canvas><canvas id="scanv" width="'+wi+'"height="'+he+'"></canvas>';
+  document.body.append(div);
+var r = 1;
+var costilctx =0;
+var img;
+ var lcanv = document.getElementById('scanv');
+ var ctx = lcanv.getContext('2d');
+ var coscanv = document.getElementById('scanv15248');
+ var gtx = coscanv.getContext('2d');
+ var dcos = target;
+ var ssgtx = dcos.getContext('2d');
+  Math.round ()
+ dcos.width = wi;
+ dcos.height = he;
 
-            <div id="copy" type="text" class="vkInpt nf toCn stripe-1 noselect" style="pointer-events: none;text-align: center;padding: 0px;"><div class="vkInpt" style="width: 100%;height: 100%;background-color: #4a424245;border-radius: 5px;margin: 0px;border: none;color: #a8afb5;">Нечего копировать</div></div>
-            <div id="menuMd2" style="display: none"><div id="outHash" type="text" class="vkInpt nf" style="width: calc(25% - 15.5px);float: left;margin-right: 0px;text-align: center;font-size: 14px;padding: 0px;padding-top: 10px;">SHA-512</div><div id="outHash" type="text" class="vkInpt nf" style="width: calc(25% - 15.5px);float: left;margin-right: 0px;margin-left: 10px;text-align: center;font-size: 14px;padding: 0px;padding-top: 10px;">SHA-256</div><div id="outHash" type="text" class="vkInpt nf" style="width: calc(25% - 15.5px);float: left;margin-right: 0px;margin-left: 11px;text-align: center;font-size: 14px;padding: 0px;padding-top: 10px;">SHA-384</div><div id="outHash" type="text" class="vkInpt nf" style="width: calc(25% - 15.5px);float: left;margin-right: 0px;margin-left: 10px;text-align: center;font-size: 14px;padding: 0px;padding-top: 10px;">SHA-224</div></div>
-        </div>
-            <script>
-            const isMobile = /Mobile|webOS|BlackBerry|IEMobile|MeeGo|mini|Fennec|Windows Phone|Android|iP(ad|od|hone)/i.test(navigator.userAgent);
-            if(!isMobile){
-                document.getElementById("copy").style.display="none";
+
+ gradient = gtx.createLinearGradient(0, 0, wi, he,);
+ /////////
+gradient.addColorStop(0, "#dde005");
+gradient.addColorStop(0.1, "#dde005");
+gradient.addColorStop(0.2, "#dde005");
+gradient.addColorStop(0.4, "#dde005");
+gradient.addColorStop(0.6, "#dde005");
+gradient.addColorStop(0.8, "#dde005");
+gradient.addColorStop(1, "#dde005");
+/////////
+gtx.fillStyle = gradient;
+gtx.fillRect(0, 0, wi, he);
+gtx.strokeRect(0, 0, wi, he)
+///////////
+
+gtx.fillStyle = "black";
+///////////
+
+  
+
+ genPatPhon(wi,he)
+function genPatPhon(cnw,cnh){
+    
+    ctx.fillText("30.000", 105, 80);
+    img = lcanv;
+    
+    ctx.beginPath();
+    ctx.rect(0, 0, cnw, cnh);
+    ctx.fillStyle = "#E7E7E7";
+    ctx.fill();
+    gradient = ctx.createLinearGradient(0, 0, wi, he);
+            if(!lightGRR){
+            gradient.addColorStop(0, "#195a21");
+            gradient.addColorStop(0.2, "#154c1d");
+            gradient.addColorStop(0.4, "#195a21");
+            gradient.addColorStop(0.6, "#154c1d");
+            gradient.addColorStop(0.8, "#195a21");
+            gradient.addColorStop(1, "#154c1d");
+            }else{
+                gradient.addColorStop(0, "#195a21");
+                gradient.addColorStop(1, "#154c1d");
             }
-            
-            function copySuccess(tf){
-                if(tf){
-                document.getElementById("copy").innerHTML = "Скопировано успешно!";
-                }else{
-                document.getElementById("copy").innerHTML = "Скопировать";    
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, wi, he);
+            ctx.strokeRect(0, 0, wi, he)
+    ctx.fillStyle = "#000000";
+    printUzor(); printUzor();   printUzor();    
+    function printUzor(){var del = 10;
+        let rt = wi / del;
+        let mn = rt*randomInteger(1, del-1)
+        ctx.beginPath();      
+        ctx.moveTo(0, mn);    
+        ctx.lineTo(he/del,mn ); 
+        ctx.stroke();
+        var lastposX = he/del;
+        var lastposY = mn;
+        var lock1 =1;
+        var lock2 =1;
+        var lock3 =1;
+        for(let o =0;o<del;){
+            var rr = randomInteger(1, 3)
+            ctx.beginPath();      
+            ctx.moveTo(lastposX, lastposY);
+            if(rr == 1){
+                if(lock1){
+                    wayTop() 
+                }else{wayMid();o=o+1;} 
+            }else if(rr == 2){
+                if(lock3){
+                    wayDown() 
+                }else{wayMid();o=o+1;} 
+            }else if(rr == 3 ){o=o+1;
+                wayMid();
+            }
+               
+            ctx.lineTo(lastposX,lastposY); 
+            ctx.stroke();
+
+        }
+
+        function wayTop(){
+            if((lastposY - wi/del)>0){
+            lastposY = lastposY - wi/del;
+            lock1 = 1;
+            lock2 = 1;
+            lock3 = 0;
+            }else{wayMid()}
+        }
+        function wayDown(){
+            if((lastposY + he/del)<he){
+            lastposY = lastposY + he/del;
+            lock1 = 0;
+            lock2 = 1;
+            lock3 = 1;
+            }else{wayMid()}
+        }
+        function wayMid(){
+            lastposX = lastposX + wi/del;
+            lock1 = 1;
+            lock2 = 1;
+            lock3 = 1;
+        }
+
+    }
+    //for(let i = 0; i < 200; i++){
+    //    ctx.fillRect(randomInteger(0, wi),randomInteger(0, he),0.5,0.5);
+    //}
+  
+
+    ctx.mozImageSmoothingEnabled = false;ctx.webkitImageSmoothingEnabled = false;ctx.msImageSmoothingEnabled = false;ctx.imageSmoothingEnabled = false;    
+    ctx.drawImage(lcanv, 0, 0);
+    document.getElementById('scanv15248').remove();
+    document.getElementById('scanv').remove();
+    ssgtx.clearRect(0, 0, wi, he);
+        ssgtx.drawImage(coscanv, 0, 0, wi, he);
+        ssgtx.drawImage(lcanv, 0, 0, wi, he);
+}
+console.log( Math.ceil(wi/30))
+var rad =  5;
+var onefive = Math.ceil(wi/15)+5;
+var thrzero = Math.ceil(wi/30)/2;
+function removearrea(x, y)
+{       
+         
+        x = x * window.devicePixelRatio;
+        y = y * window.devicePixelRatio;
+        var imgData = ctx.getImageData(x-rad, y-rad, onefive, onefive);
+        for(let Y = 0;Y<onefive;Y++){
+            for(let X= 0; X<onefive;X++){
+                if(((X - thrzero)*(X - thrzero)) + ((Y - thrzero)*(Y - thrzero)) <= (rad*rad)){
+                    var id = (((Y*onefive)+X)*4)+3
+                    imgData.data[id]=0;
                 }
             }
+        }
+        ctx.putImageData(imgData, x-rad, y-rad);
+        ssgtx.clearRect(0, 0, wi, he);
+        ssgtx.drawImage(coscanv, 0, 0, wi, he);
 
-            var type = "md5";
-            var input = document.getElementById("inHash");
-            input.oninput = function() {
-                if(input.value.length>0){
-                if(type == "md5"){
-                document.getElementById("outHash").innerHTML = CryptoJS.MD5(input.value).toString();
-                }
-                if(type == "SHA-1"){
-                document.getElementById("outHash").innerHTML = CryptoJS.SHA1(input.value).toString();
-                }
-                document.getElementById("copy").innerHTML = "Скопировать";
-                document.getElementById("copy").style.padding = "10px";
-                document.getElementById("copy").style.pointerEvents = "";
-                
-                }else{
-                document.getElementById("outHash").innerHTML = ""
-                document.getElementById("copy").style.padding = "0px";
-                document.getElementById("copy").style.pointerEvents = "none";
-                canIChange = false;
-                document.getElementById("copy").innerHTML = "Нечего копировать";   
-                document.getElementById("copy").innerHTML = nonAcCopy;
-                }
-            };
-            
+        ssgtx.drawImage(lcanv, 0, 0, wi, he);
+} 
+            var control = false;
+            dcos.addEventListener("touchstart", function (event) {
+                control = true;
+                event.preventDefault();
+            }, false); 
 
-            function typechange(){
-                document.getElementById("outHash").innerHTML = "";
-                input.value = "";
-                if(type == "md5"){
-                    document.getElementById("inintype").innerHTML = "md5 hash";
-                    document.getElementById("menuMd2").style.display = "none"
+            dcos.addEventListener("touchmove", function (event) {
+                if(control){
+                    var rect = event.target.getBoundingClientRect();
+                    var x = event.targetTouches[0].pageX - rect.left;
+                    var y = event.targetTouches[0].pageY - rect.top;
+                removearrea(x, y)
                 }
-                if(type == "SHA-1"){
-                    document.getElementById("inintype").innerHTML = "SHA-1 hash";
-                    document.getElementById("menuMd2").style.display = "none"
+                event.preventDefault();
+            }, false,{passive: false});
+
+            dcos.addEventListener("touchend", function (event) {
+               control = false;
+               event.preventDefault();
+            }, false);
+///////
+///////
+            dcos.addEventListener('mousedown', function (event) {
+                control = true;
+            }, false);
+            dcos.addEventListener('mousemove', function (event) {
+                if(control){
+                    var rect = event.target.getBoundingClientRect();
+                    var x = event.pageX - rect.left;
+                    var y = event.pageY - rect.top;
+                removearrea(x, y)
                 }
-                if(type == "SHA-2"){
-                    document.getElementById("inintype").innerHTML = "SHA-2 hash";
-                    document.getElementById("menuMd2").style.display = ""
-                    
-                }       
-            }
-            //var backArr = '<div style=" width: 30px; color: #2e6cab; margin-top: calc((55px / 2) - 32px / 2); margin-left: 10px; float: left; "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="browser_back_24"><g fill="none" fill-rule="evenodd"><path d="M0 0h24v24H0z"></path><path d="M8.656 12l7.122 7.122a1.1 1.1 0 11-1.556 1.556l-7.9-7.9a1.1 1.1 0 010-1.556l7.9-7.9a1.1 1.1 0 011.556 1.556L8.656 12z" fill="currentColor" fill-rule="nonzero"></path></g></svg></div>';    
-            var nonAcCopy ='<div class="vkInpt" style="width: 100%;height: 100%;background-color: #4a424245;border-radius: 5px;margin: 0px;border: none;color: #a8afb5;">Нечего копировать</div>'
-            document.getElementById("md5C").addEventListener( "click" , () => {
-                type = "md5";
-                typechange();
-                showMenu(false);
-                showMenuNM8(true);
-                document.getElementById("vkHeaderText").innerHTML="Проверка MD5";
-            });
-            
-            document.getElementById("SHA-1").addEventListener( "click" , () => {
-                type = "SHA-1";
-                typechange();
-                showMenu(false);
-                showMenuNM8(true);
-                document.getElementById("vkHeaderText").innerHTML="Проверка SHA-1";
-            });
-            document.getElementById("SHA-2").addEventListener( "click" , () => {
-                type = "SHA-2";
-                typechange();
-                showMenu(false);
-                showMenuNM8(true);
-                document.getElementById("vkHeaderText").innerHTML="Проверка SHA-2";
-            });
+            }, false);
+            dcos.addEventListener('mouseup', function (e) {
+
+                control = false;
+                e.preventDefault();
+            });   
+///////
+
+function randomInteger(min, max) {
+  let rand = min - 0.5 + Math.random() * (max - min + 1);
+  return Math.round(rand);
+}
 
 
-            var timeOutCou = 0;
-            document.getElementById("copy").addEventListener( "click" , () => {
-                if(input.value.length>0){
-                vkBridge.send("VKWebAppCopyText", {"text": document.getElementById("outHash").innerHTML});
-                copySuccess(true);
-                document.getElementById("copy").style.pointerEvents = "none";
-             
-                }    
-            });
+}
+</script>
 
-            function showMenu(tf){
-                if(tf){
-                document.getElementById("menu").style.display = ""
-                document.getElementById("menu").style.position = "";
-                document.getElementById("menu").style.top = "";
-                }else{
-                document.getElementById("menu").style.display = "none"
-                document.getElementById("menu").style.position = "absolute";
-                document.getElementById("menu").style.top = "-9999px";
-                }
-            }
-            
-            function showMenuNM8(tf){
-                if(tf){
-                formHeaderWithBack(true);    
-                document.getElementById("menu1").style.display = ""
-                document.getElementById("menu1").style.position = "";
-                document.getElementById("menu1").style.top = "";
-                }else{
-                formHeaderWithBack(false);     
-                document.getElementById("menu1").style.display = "none"
-                document.getElementById("menu1").style.position = "absolute";
-                document.getElementById("menu1").style.top = "-9999px";
-                }
-            }
-
-            function formHeaderWithBack(tf){
-                if(tf){
-                document.getElementById("HEAD").innerHTML = '<div id="backback" style=" width: 30px; color: #2e6cab; margin-top: calc((55px / 2) - 30px / 2); margin-left: 10px; float: left; "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="browser_back_24"><g fill="none" fill-rule="evenodd"><path d="M0 0h24v24H0z"></path><path d="M8.656 12l7.122 7.122a1.1 1.1 0 11-1.556 1.556l-7.9-7.9a1.1 1.1 0 010-1.556l7.9-7.9a1.1 1.1 0 011.556 1.556L8.656 12z" fill="currentColor" fill-rule="nonzero"></path></g></svg></div><h5 id="vkHeaderText"></h5>';  
-                document.getElementById("backback").addEventListener( "click" , () => {
-                     formHeaderWithBack(false)
-                     showMenu(true);
-                     showMenuNM8(false)
-                });
-            
-                }else{    
-                document.getElementById("HEAD").innerHTML = '  <h5 id="vkHeaderText" >Что проверяем сегодня?</h5>';   
-                }
-            }
-            </script>
+</body></html>
 
 
-            
-</body>
-</html>
+
+<!-- function generateTicket(y,g,a,c,u,v){function x(d,f){for(var n=b.getImageData(d-h,f-h,m,m),p=0;p<m;p++)for(var q=0;q<m;q++)(q-r)*(q-r)+(p-r)*(p-r)<=h*h&&(n.data[4*(p*m+q)+3]=0);b.putImageData(n,d-h,f-h);k.clearRect(0,0,a,c);k.drawImage(w,0,0,a,c);k.drawImage(t,0,0,a,c)}u=10*u||a;v=2*v||c;var e=document.createElement("div");e.className="none";e.innerHTML='<canvas id="scanv15248"width="'+a+'"height="'+c+'"></canvas><canvas id="scanv" width="'+a+'"height="'+c+'"></canvas>';document.body.append(e);var t=
+document.getElementById("scanv"),b=t.getContext("2d"),w=document.getElementById("scanv15248");e=w.getContext("2d");var k=g.getContext("2d");g.width=a;g.height=c;gradient=e.createLinearGradient(0,0,a,c);gradient.addColorStop(0,"#FFF");gradient.addColorStop(.1,"#F9F9F9");gradient.addColorStop(.2,"#F9F3F3");gradient.addColorStop(.4,"#EEE8E8");gradient.addColorStop(.6,"#FBFAFA");gradient.addColorStop(.8,"#F2EEEE");gradient.addColorStop(1,"#FFF");e.fillStyle=gradient;e.fillRect(0,0,a,c);e.strokeRect(0,
+0,a,c);e.fillStyle="black";e.textAlign="center";e.font=u/10+"px Arial";e.fillText(y,a/2,v/2);e.strokeRect(0,0,a,c);(function(d,f){b.fillText("30.000",105,80);b.beginPath();b.rect(0,0,d,f);b.fillStyle="#E7E7E7";b.fill();gradient=b.createLinearGradient(0,0,a,c);gradient.addColorStop(0,"#bfbfbf");gradient.addColorStop(.2,"#e6e6e6");gradient.addColorStop(.4,"#d1d1d1");gradient.addColorStop(.6,"#f5f5f5");gradient.addColorStop(.8,"#c7c7c7");gradient.addColorStop(1,"#E7E7E7");b.fillStyle=gradient;b.fillRect(0,
+0,a,c);b.strokeRect(0,0,a,c);b.fillStyle="#635353";for(var n=0;200>n;n++)b.fillRect(Math.round(-.5+Math.random()*(a-0+1)),Math.round(-.5+Math.random()*(c-0+1)),.5,.5);b.textAlign="center";250<a&&(b.font=a/30+"px Arial",b.fillText("SIMPLE ECONOMY",a/2,c/2-a/60),b.font=a/33,"3333333px Arial",b.fillText("REGULAR TICKET",a/2,c/2+a/60),b.font="25px Arial");b.mozImageSmoothingEnabled=!1;b.webkitImageSmoothingEnabled=!1;b.msImageSmoothingEnabled=!1;b.imageSmoothingEnabled=!1;b.drawImage(t,0,0);document.getElementById("scanv15248").remove();
+document.getElementById("scanv").remove();k.clearRect(0,0,a,c);k.drawImage(w,0,0,a,c);k.drawImage(t,0,0,a,c)})(a,c);var h=Math.ceil(a/30),m=Math.ceil(a/15),r=Math.ceil(a/30),l=!1;g.addEventListener("touchstart",function(d){l=!0;d.preventDefault()},!1);g.addEventListener("touchmove",function(d){if(l){var f=d.target.getBoundingClientRect();x(d.targetTouches[0].pageX-f.left,d.targetTouches[0].pageY-f.top)}d.preventDefault()},!1,{passive:!1});g.addEventListener("touchend",function(d){l=!1;d.preventDefault()},
+!1);g.addEventListener("mousedown",function(d){l=!0},!1);g.addEventListener("mousemove",function(d){if(l){var f=d.target.getBoundingClientRect();x(d.pageX-f.left,d.pageY-f.top)}},!1);g.addEventListener("mouseup",function(d){l=!1;d.preventDefault()})}; -->
